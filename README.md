@@ -21,6 +21,15 @@ The visual text added to the page is hiddent from screen readers to ensure the t
 3. Make your changes on the fork
 4. Submit a PR to the `nickdenardis/social-visual-alt-text` `main` branch
 
+## Twitter examples
+
+| Photo with alt | Photo without alt |
+|--------|--------|
+| ![Photo with alt text visible under image](https://nickdenardis.github.io/social-visual-alt-text/assets/twitter-example-single-image.png) | ![Photo without alt text showing a read line under the image](https://nickdenardis.github.io/social-visual-alt-text/assets/twitter-example-no-alt.png) |
+
+| Multiple photos with alt | GIF with alt |
+|--------|--------|
+| ![Multiple photos with each alt text displayed underneith](https://nickdenardis.github.io/social-visual-alt-text/assets/twitter-example-multiple-photos.png) | ![GIF with alt text visible below](https://nickdenardis.github.io/social-visual-alt-text/assets/twitter-example-gif.png)
 
 ## Licensing
 
