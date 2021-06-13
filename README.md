@@ -14,6 +14,13 @@ The visual text added to the page is hiddent from screen readers to ensure the t
 - [ ] Facebook
 - [ ] Instagram
 
+## To test
+
+1. [Download the zip of the `main` branch](https://github.com/nickdenardis/social-visual-alt-text/archive/refs/heads/main.zip)
+2. Open Chrome "Manage Extensions" and enable "Developer mode"
+3. Unzip and select "Load unpacked"
+4. Find the unzipped directory and choose "Open"
+
 ## Contributing
 
 1. Please open an issue before submitting a pull request
