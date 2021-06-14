@@ -2,6 +2,8 @@
 
 This extension is designed for individuals who are interested in viewing the alt text applied to images without the need to inspect each image or use a screen reader.
 
+![Example of scrolling through Twitter timeline with some images showing alt text and others with a red line](https://nickdenardis.github.io/social-visual-alt-text/assets/twitter-example-timeline.gif)
+
 This is helpful to see what alt text is applied (if any) to an image which may provide additional context to the contence of the image, what a screen reader user would hear and if additional context should be added if you are planning to retweet a post.
 
 The visual text added to the page is hiddent from screen readers to ensure the text is not read to the user twice.
