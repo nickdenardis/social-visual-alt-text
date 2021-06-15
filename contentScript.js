@@ -4,8 +4,8 @@ let twitterImages = true,
 
 // Get the users preferences
 chrome.storage.sync.get(["twitterImages", "twitterGifs"], function (result) {
-    twitterImages = result.twitterImages;
-    twitterGifs = result.twitterGifs;
+    twitterImages = result.twitterImages || true;
+    twitterGifs = result.twitterGifs || true;
 });
 
 // Search for items with alt text
