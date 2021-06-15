@@ -2,12 +2,19 @@
 let options = {
     twitterImages: true,
     twitterGifs: true,
+    colorNoAlt: '#FF0000',
+    colorAltBg: '#0000FF',
+    colorAltText: '#FFFFFF',
 };
 
 // Get the users preferences
 chrome.storage.sync.get(["options"], function (result) {
     if (result.options) {
-        options = result.options;
+        options.twitterImages = result.options.twitterImages || options.twitterImages;
+        options.twitterGifs = result.options.twitterGifs || options.twitterGifs;
+        options.colorNoAlt = result.options.colorNoAlt || options.colorNoAlt;
+        options.colorAltBg = result.options.colorAltBg || options.colorAltBg;
+        options.colorAltText = result.options.colorAltText || options.colorAltText;
     }
 });
 
@@ -44,11 +51,11 @@ let insertAlt = function () {
                 !userGif.getAttribute("aria-label") ||
                 userGif.getAttribute("aria-label") == "Embedded video"
             ) {
-                altText.style.backgroundColor = "red";
+                altText.style.backgroundColor = options.colorNoAlt;
                 altText.style.height = "12px";
             } else {
-                altText.style.color = "white";
-                altText.style.backgroundColor = "blue";
+                altText.style.color = options.colorAltText;
+                altText.style.backgroundColor = options.colorAltBg;
                 altText.style.fontSize = "18px";
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
@@ -88,11 +95,11 @@ let insertAlt = function () {
                 !userImage.getAttribute("alt") ||
                 userImage.getAttribute("alt") == "Image"
             ) {
-                altText.style.backgroundColor = "red";
+                altText.style.backgroundColor = options.colorNoAlt;
                 altText.style.height = "12px";
             } else {
-                altText.style.color = "white";
-                altText.style.backgroundColor = "blue";
+                altText.style.color = options.colorAltText;
+                altText.style.backgroundColor = options.colorAltBg;
                 altText.style.fontSize = "18px";
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
