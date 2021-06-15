@@ -1,24 +1,27 @@
 // If sync.get fails, we default to everything on
-let twitterImages = true,
-    twitterGifs = true;
+let options = {
+    twitterImages: true,
+    twitterGifs: true,
+};
 
 // Get the users preferences
-chrome.storage.sync.get(["twitterImages", "twitterGifs"], function (result) {
-    twitterImages = result.twitterImages || true;
-    twitterGifs = result.twitterGifs || true;
+chrome.storage.sync.get(["options"], function (result) {
+    if (result.options) {
+        options = result.options;
+    }
 });
 
 // Search for items with alt text
 let insertAlt = function () {
     // Twitter images (single or multiple)
-    const timelineImages = twitterImages
+    const timelineImages = options.twitterImages
         ? document.querySelectorAll(
               'main div[data-testid="primaryColumn"] img[src^="https://pbs.twimg.com/media/"]'
           )
         : [];
 
     // Twitter GIFs
-    const timelineGifs = twitterGifs
+    const timelineGifs = options.twitterGifs
         ? document.querySelectorAll(
               'main div[data-testid="primaryColumn"] video[src^="https://video.twimg.com/tweet_video/"]'
           )
