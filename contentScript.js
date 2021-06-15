@@ -7,9 +7,30 @@ var insertAlt = function () {
         'main div[data-testid="primaryColumn"] video[src^="https://video.twimg.com/tweet_video/"]'
     );
 
+    const timelineVideos = document.querySelectorAll(
+        'main div[data-testid="primaryColumn"] video[src^="blob:https://twitter.com/"]'
+    );
+
+    timelineVideos.forEach(function (userVideo) {
+        if (userVideo.getAttribute("data-altdisplayed") !== "true") {
+            // console.log(userVideo.getAttribute("aria-label"));
+            // Find video container
+            const userVideoContainer = userVideo.parentElement.parentElement.parentElement;
+            // console.log(userVideoContainer);
+            // Issue this only is in the DOM on hover of video element
+            if (userVideoContainer.querySelector('div[data-testid="captions"]')) {
+                console.log('Captions found');
+            } else {
+                console.log('Captions NOT found');
+            }
+
+            userVideo.setAttribute("data-altdisplayed", "true");
+        }
+    });
+
     timelineGifs.forEach(function (userGif) {
         if (userGif.getAttribute("data-altdisplayed") !== "true") {
-            console.log(userGif.getAttribute("aria-label"));
+            // Twitter 2021 interface
             let gifLink =
                 userGif.parentElement.parentElement.parentElement.parentElement
                     .parentElement.parentElement.parentElement.parentElement
