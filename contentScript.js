@@ -1,23 +1,42 @@
-var insertAlt = function () {
-    const timelineImages = document.querySelectorAll(
-        'main div[data-testid="primaryColumn"] img[src^="https://pbs.twimg.com/media/"]'
-    );
+// If sync.get fails, we default to everything on
+let twitterImages = true,
+    twitterGifs = true;
 
-    const timelineGifs = document.querySelectorAll(
-        'main div[data-testid="primaryColumn"] video[src^="https://video.twimg.com/tweet_video/"]'
-    );
+// Get the users preferences
+chrome.storage.sync.get(["twitterImages", "twitterGifs"], function (result) {
+    twitterImages = result.twitterImages;
+    twitterGifs = result.twitterGifs;
+});
+
+// Search for items with alt text
+let insertAlt = function () {
+    // Twitter images (single or multiple)
+    const timelineImages = twitterImages
+        ? document.querySelectorAll(
+              'main div[data-testid="primaryColumn"] img[src^="https://pbs.twimg.com/media/"]'
+          )
+        : [];
+
+    // Twitter GIFs
+    const timelineGifs = twitterGifs
+        ? document.querySelectorAll(
+              'main div[data-testid="primaryColumn"] video[src^="https://video.twimg.com/tweet_video/"]'
+          )
+        : [];
 
     timelineGifs.forEach(function (userGif) {
         if (userGif.getAttribute("data-altdisplayed") !== "true") {
-            console.log(userGif.getAttribute("aria-label"));
+            // Twitter June 2021 visible container
             let gifLink =
                 userGif.parentElement.parentElement.parentElement.parentElement
                     .parentElement.parentElement.parentElement.parentElement
                     .parentElement.parentElement;
 
+            // Container for visible text
             const altText = document.createElement("div");
             altText.setAttribute("aria-hidden", "true");
 
+            // Determine if the GIF has alt text on it
             if (
                 !userGif.getAttribute("aria-label") ||
                 userGif.getAttribute("aria-label") == "Embedded video"
@@ -57,9 +76,11 @@ var insertAlt = function () {
                 }
             }
 
+            // Container for visible text
             const altText = document.createElement("div");
             altText.setAttribute("aria-hidden", "true");
 
+            // Determine if the image has alt text on it
             if (
                 !userImage.getAttribute("alt") ||
                 userImage.getAttribute("alt") == "Image"
@@ -84,7 +105,7 @@ var insertAlt = function () {
     });
 };
 
-var twitterLoop = function twitterLoop() {
+let twitterLoop = function twitterLoop() {
     insertAlt();
     setTimeout(twitterLoop, 500);
 };
