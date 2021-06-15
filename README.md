@@ -8,6 +8,12 @@ This is helpful to see what alt text is applied (if any) to an image which may p
 
 The visual text added to the page is hiddent from screen readers to ensure the text is not read to the user twice.
 
+## Options
+
+View the extension options to turn the different platforms and media types on and off.
+
+![Options modal showing Twitter image and GIF settings](https://nickdenardis.github.io/social-visual-alt-text/assets/extension-options.png)
+
 ## Current sites
 
 - [x] Twitter images

@@ -1,8 +1,12 @@
 {
   "name": "Social visual alt text",
   "description": "Visually show alternative text of social media images",
-  "version": "0.1",
+  "version": "0.2",
   "manifest_version": 3,
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
   "content_scripts": [
     {
       "matches": ["https://twitter.com/*"],
@@ -10,6 +14,7 @@
       "run_at": "document_end"
     }
   ],
+  "permissions": ["storage"],
   "host_permissions": ["https://twitter.com/"],
   "icons": {
     "16": "/images/visual-alt-16.png",
