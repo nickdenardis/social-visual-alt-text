@@ -25,11 +25,13 @@ let insertAlt = function () {
         : [];
 
     // Instagram images
-    const instagramImages = document.querySelectorAll('main article img[src^="https://instagram"]:not([data-testid="user-avatar"])');
+    const instagramImages = document.querySelectorAll(
+        'main article img[src^="https://instagram"]:not([data-testid="user-avatar"])'
+    );
 
     instagramImages.forEach(function (igImage) {
         if (igImage.getAttribute("data-altdisplayed") !== "true") {
-            // Instagram June 2021 visible container (single image)
+            // Instagram June 2021 visible container (single image working)
             let imageLink = igImage.parentElement.parentElement;
 
             // Container for visible text
@@ -56,12 +58,9 @@ let insertAlt = function () {
                 imageLink.append(altText);
             }
 
-
-            console.log(igImage);
             igImage.setAttribute("data-altdisplayed", "true");
         }
     });
-
 
     timelineGifs.forEach(function (userGif) {
         if (userGif.getAttribute("data-altdisplayed") !== "true") {
