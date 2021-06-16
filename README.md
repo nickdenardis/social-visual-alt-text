@@ -20,7 +20,7 @@ View the extension options to turn the different platforms and media types on an
 - [x] Twitter GIFs
 - [ ] Twitter video captions
 - [ ] Facebook
-- [ ] Instagram
+- [x] Instagram (experimental, single image posts working)
 
 ## To test
 
@@ -45,6 +45,10 @@ View the extension options to turn the different platforms and media types on an
 | Multiple photos with alt | GIF with alt |
 |--------|--------|
 | ![Multiple photos with each alt text displayed underneith](https://nickdenardis.github.io/social-visual-alt-text/assets/twitter-example-multiple-photos.png) | ![GIF with alt text visible below](https://nickdenardis.github.io/social-visual-alt-text/assets/twitter-example-gif.png)
+
+## Instagram examples
+
+![Single photo image post with alt text underneith](https://nickdenardis.github.io/social-visual-alt-text/assets/instagram-example-single-image.png)
 
 ## Licensing
 

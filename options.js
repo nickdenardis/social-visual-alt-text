@@ -2,6 +2,7 @@
 let default_options = {
     twitterImages: true,
     twitterGifs: true,
+    instagramImages: true,
     colorNoAlt: '#FF0000',
     colorAltBg: '#0000FF',
     colorAltText: '#FFFFFF',
@@ -12,6 +13,7 @@ function save_options() {
     let options = {
         twitterImages: document.getElementById("twitter_images").checked,
         twitterGifs: document.getElementById("twitter_gifs").checked,
+        instagramImages: document.getElementById("instagram_images").checked,
         colorNoAlt: document.getElementById("color_no_alt").value,
         colorAltBg: document.getElementById("color_alt_background").value,
         colorAltText: document.getElementById("color_alt_text").value,
@@ -44,6 +46,8 @@ function restore_options() {
                 items.options.twitterImages || default_options.twitterImages;
             document.getElementById("twitter_gifs").checked =
                 items.options.twitterGifs || default_options.twitterGifs;
+            document.getElementById("instagram_images").checked =
+                items.options.instagramImages || default_options.instagramImages;
             document.getElementById("color_no_alt").value =
                 items.options.colorNoAlt || default_options.colorNoAlt;
             document.getElementById("color_alt_background").value =

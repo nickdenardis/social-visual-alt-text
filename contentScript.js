@@ -2,19 +2,24 @@
 let options = {
     twitterImages: true,
     twitterGifs: true,
-    colorNoAlt: '#FF0000',
-    colorAltBg: '#0000FF',
-    colorAltText: '#FFFFFF',
+    instagramImages: true,
+    colorNoAlt: "#FF0000",
+    colorAltBg: "#0000FF",
+    colorAltText: "#FFFFFF",
 };
 
 // Get the users preferences
 chrome.storage.sync.get(["options"], function (result) {
     if (result.options) {
-        options.twitterImages = result.options.twitterImages || options.twitterImages;
+        options.twitterImages =
+            result.options.twitterImages || options.twitterImages;
         options.twitterGifs = result.options.twitterGifs || options.twitterGifs;
+        options.instagramImages =
+            result.options.instagramImages || options.instagramImages;
         options.colorNoAlt = result.options.colorNoAlt || options.colorNoAlt;
         options.colorAltBg = result.options.colorAltBg || options.colorAltBg;
-        options.colorAltText = result.options.colorAltText || options.colorAltText;
+        options.colorAltText =
+            result.options.colorAltText || options.colorAltText;
     }
 });
 
@@ -35,9 +40,11 @@ let insertAlt = function () {
         : [];
 
     // Instagram images
-    const instagramImages = document.querySelectorAll(
-        'main article img[src^="https://instagram"]:not([data-testid="user-avatar"])'
-    );
+    const instagramImages = options.instagramImages
+        ? document.querySelectorAll(
+              'main article img[src^="https://instagram"]:not([data-testid="user-avatar"])'
+          )
+        : [];
 
     instagramImages.forEach(function (igImage) {
         if (igImage.getAttribute("data-altdisplayed") !== "true") {
