@@ -21,5 +21,10 @@
     "32": "/images/visual-alt-32.png",
     "48": "/images/visual-alt-48.png",
     "128": "/images/visual-alt-128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{d63bf015-2002-4ef8-96dc-b99bab518ec9}"
+    }
   }
 }
