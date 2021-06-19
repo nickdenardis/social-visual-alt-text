@@ -5,6 +5,7 @@ let options = {
     instagramImages: true,
     colorNoAlt: "#FF0000",
     colorAltBg: "#0000FF",
+    aiColorAltBg: "#750238",
     colorAltText: "#FFFFFF",
 };
 
@@ -18,6 +19,7 @@ chrome.storage.sync.get(["options"], function (result) {
             result.options.instagramImages || options.instagramImages;
         options.colorNoAlt = result.options.colorNoAlt || options.colorNoAlt;
         options.colorAltBg = result.options.colorAltBg || options.colorAltBg;
+        options.aiColorAltBg = result.options.aiColorAltBg || options.aiColorAltBg;
         options.colorAltText =
             result.options.colorAltText || options.colorAltText;
     }
@@ -59,11 +61,20 @@ let insertAlt = function () {
                 !igImage.getAttribute("alt") ||
                 igImage.getAttribute("alt") == "Image"
             ) {
-                altText.style.backgroundColor = "red";
+                imageLink = igImage.parentElement.parentElement.parentElement.parentElement.parentElement;
+                altText.style.backgroundColor = options.colorNoAlt;
                 altText.style.height = "12px";
+            } else if (igImage.getAttribute("alt").includes("May be an image of")) {
+                altText.style.color = options.colorAltText;
+                altText.style.backgroundColor = options.aiColorAltBg;
+                altText.style.fontSize = "18px";
+                altText.style.padding = "4px 8px";
+                altText.style.fontFamily =
+                    'Arial, "Helvetica Neue", Helvetica, sans-serif';
+                altText.textContent = igImage.getAttribute("alt");
             } else {
-                altText.style.color = "white";
-                altText.style.backgroundColor = "blue";
+                altText.style.color = options.colorAltText;
+                altText.style.backgroundColor = options.colorAltBg;
                 altText.style.fontSize = "18px";
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =

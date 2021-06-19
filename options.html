@@ -7,6 +7,8 @@
         <title>Social visual alt text options</title>
     </head>
     <body>
+        <fieldset>
+            <legend>Enable visual alt text for</legend>
         <p>
             <label>
                 <input type="checkbox" id="twitter_images" />
@@ -27,7 +29,9 @@
                 Instagram images (experimental)
             </label>
         </p>
-
+    </fieldset>
+    <fieldset>
+        <legend>Color options</legend>
         <p>
             <label>
                 <input type="color" value="#FF0000" id="color_no_alt">
@@ -38,7 +42,14 @@
         <p>
             <label>
                 <input type="color" value="#0000FF" id="color_alt_background">
-                Alt text background color
+                Human generated alt text background color
+            </label>
+        </p>
+
+        <p>
+            <label>
+                <input type="color" value="#750238" id="ai_color_alt_background">
+                AI generated alt text background color
             </label>
         </p>
 
@@ -48,6 +59,7 @@
                 Alt text color
             </label>
         </p>
+    </fieldset>
 
         <div id="status"></div>
         <button id="save">Save</button>
