@@ -5,6 +5,7 @@ let default_options = {
     instagramImages: true,
     colorNoAlt: '#FF0000',
     colorAltBg: '#0000FF',
+    aiColorAltBg: '#750238',
     colorAltText: '#FFFFFF',
 };
 
@@ -16,6 +17,7 @@ function save_options() {
         instagramImages: document.getElementById("instagram_images").checked,
         colorNoAlt: document.getElementById("color_no_alt").value,
         colorAltBg: document.getElementById("color_alt_background").value,
+        aiColorAltBg: document.getElementById("ai_color_alt_background").value,
         colorAltText: document.getElementById("color_alt_text").value,
     };
 
@@ -52,6 +54,8 @@ function restore_options() {
                 items.options.colorNoAlt || default_options.colorNoAlt;
             document.getElementById("color_alt_background").value =
                 items.options.colorAltBg || default_options.colorAltBg;
+            document.getElementById("ai_color_alt_background").value =
+                items.options.aiColorAltBg || default_options.aiColorAltBg;
             document.getElementById("color_alt_text").value =
                 items.options.colorAltText || default_options.colorAltText;
             }
