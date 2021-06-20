@@ -53,7 +53,7 @@ let insertAlt = function () {
     // Facebook images
     const facebookImages = options.facebookImages
         ? document.querySelectorAll(
-              'div[role="feed"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div[data-pagelet="ProfileTimeline"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div#pagelet_timeline_main_column img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([src*="50x50"])'
+              'div[role="feed"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div[role="main"] div[role="article"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div[data-pagelet="ProfileTimeline"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div#pagelet_timeline_main_column img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([src*="50x50"])'
           )
         : [];
 
