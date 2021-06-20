@@ -4,10 +4,10 @@ let default_options = {
     twitterGifs: true,
     instagramImages: true,
     facebookImages: true,
-    colorNoAlt: '#FF0000',
-    colorAltBg: '#0000FF',
-    aiColorAltBg: '#750238',
-    colorAltText: '#FFFFFF',
+    colorNoAlt: "#FF0000",
+    colorAltBg: "#0000FF",
+    aiColorAltBg: "#750238",
+    colorAltText: "#FFFFFF",
 };
 
 // Saves options to chrome.storage
@@ -43,7 +43,7 @@ function restore_options() {
     // Use default values
     chrome.storage.sync.get(
         {
-            options: default_options
+            options: default_options,
         },
         function (items) {
             document.getElementById("twitter_images").checked =
@@ -51,7 +51,8 @@ function restore_options() {
             document.getElementById("twitter_gifs").checked =
                 items.options.twitterGifs || default_options.twitterGifs;
             document.getElementById("instagram_images").checked =
-                items.options.instagramImages || default_options.instagramImages;
+                items.options.instagramImages ||
+                default_options.instagramImages;
             document.getElementById("facebook_images").checked =
                 items.options.facebookImages || default_options.facebookImages;
             document.getElementById("color_no_alt").value =
@@ -62,7 +63,7 @@ function restore_options() {
                 items.options.aiColorAltBg || default_options.aiColorAltBg;
             document.getElementById("color_alt_text").value =
                 items.options.colorAltText || default_options.colorAltText;
-            }
+        }
     );
 }
 document.addEventListener("DOMContentLoaded", restore_options);

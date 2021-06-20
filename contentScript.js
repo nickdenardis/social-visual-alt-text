@@ -20,7 +20,8 @@ chrome.storage.sync.get(["options"], function (result) {
             result.options.instagramImages || options.instagramImages;
         options.colorNoAlt = result.options.colorNoAlt || options.colorNoAlt;
         options.colorAltBg = result.options.colorAltBg || options.colorAltBg;
-        options.aiColorAltBg = result.options.aiColorAltBg || options.aiColorAltBg;
+        options.aiColorAltBg =
+            result.options.aiColorAltBg || options.aiColorAltBg;
         options.colorAltText =
             result.options.colorAltText || options.colorAltText;
     }
@@ -52,14 +53,16 @@ let insertAlt = function () {
     // Facebook images
     const facebookImages = options.facebookImages
         ? document.querySelectorAll(
-              'div[role="feed"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]),div[data-pagelet="ProfileTimeline"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"])'
+              'div[role="feed"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div[data-pagelet="ProfileTimeline"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div#pagelet_timeline_main_column img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([src*="50x50"])'
           )
         : [];
 
     facebookImages.forEach(function (fbImage) {
         if (fbImage.getAttribute("data-altdisplayed") !== "true") {
             // Facebook June 2021 visible container (single image working)
-            let imageLink = fbImage.parentElement.parentElement.parentElement.parentElement.parentElement;
+            let imageLink =
+                fbImage.parentElement.parentElement.parentElement.parentElement
+                    .parentElement;
 
             // Container for visible text
             const altText = document.createElement("div");
@@ -95,7 +98,7 @@ let insertAlt = function () {
             if (imageLink) {
                 imageLink.append(altText);
             }
-            
+
             fbImage.setAttribute("data-altdisplayed", "true");
         }
     });
@@ -113,7 +116,9 @@ let insertAlt = function () {
                 !igImage.getAttribute("alt") ||
                 igImage.getAttribute("alt") == "Image"
             ) {
-                imageLink = igImage.parentElement.parentElement.parentElement.parentElement.parentElement;
+                imageLink =
+                    igImage.parentElement.parentElement.parentElement
+                        .parentElement.parentElement;
                 altText.style.backgroundColor = options.colorNoAlt;
                 altText.style.height = "12px";
             } else if (

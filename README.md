@@ -19,8 +19,8 @@ View the extension options to turn the different platforms and media types on an
 - [x] Twitter images
 - [x] Twitter GIFs
 - [ ] Twitter video captions
-- [ ] Facebook
-- [x] Instagram (experimental, single image posts working)
+- [-] Facebook (experimental, single image posts working)
+- [-] Instagram (experimental, single image posts working)
 
 ## To test
 
@@ -48,7 +48,15 @@ View the extension options to turn the different platforms and media types on an
 
 ## Instagram examples
 
-![Single photo image post with alt text underneith](https://nickdenardis.github.io/social-visual-alt-text/assets/instagram-example-single-image.png)
+| Human alt text | AI alt text |
+|--------|--------|
+| ![Single photo image post with alt text underneith](https://nickdenardis.github.io/social-visual-alt-text/assets/instagram-example-single-image.png) | ![Single photo image post with different background of AI generated alt text underneith](https://nickdenardis.github.io/social-visual-alt-text/assets/instagram-example-single-image-ai.png) |
+
+## Facebook examples
+
+| Human alt text | AI alt text |
+|--------|--------|
+| ![Single image post with alt text underneith](https://nickdenardis.github.io/social-visual-alt-text/assets/facebook-example-single-image.png) | ![Single image post with alt text underneith, older interface](https://nickdenardis.github.io/social-visual-alt-text/assets/facebook-example-single-image-ai.png)
 
 ## Licensing
 

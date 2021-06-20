@@ -1,7 +1,7 @@
 {
   "name": "Social visual alt text",
   "description": "Visually show alternative text of social media images",
-  "version": "0.4",
+  "version": "0.5",
   "manifest_version": 3,
   "options_ui": {
     "page": "options.html",
@@ -9,13 +9,21 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://twitter.com/*", "https://www.instagram.com/*", "https://www.facebook.com/*"],
+      "matches": [
+        "https://twitter.com/*",
+        "https://www.instagram.com/*",
+        "https://www.facebook.com/*"
+      ],
       "js": ["contentScript.js"],
       "run_at": "document_end"
     }
   ],
   "permissions": ["storage"],
-  "host_permissions": ["https://twitter.com/", "https://www.instagram.com/", "https://www.facebook.com/"],
+  "host_permissions": [
+    "https://twitter.com/",
+    "https://www.instagram.com/",
+    "https://www.facebook.com/"
+  ],
   "icons": {
     "16": "/images/visual-alt-16.png",
     "32": "/images/visual-alt-32.png",
