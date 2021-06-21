@@ -7,6 +7,8 @@ This extension is designed for individuals who are interested in viewing the alt
 - [Chome webstore](https://chrome.google.com/webstore/detail/social-visual-alt-text/bkpbmomfemcjdeekdffmbohifpndodmi)
 - [Firefox add-ons](https://addons.mozilla.org/en-US/firefox/addon/social-visual-alt-text/)
 
+## Example usage
+
 ![Example of scrolling through Twitter timeline with some images showing alt text and others with a red line](https://nickdenardis.github.io/social-visual-alt-text/assets/twitter-example-timeline.gif)
 
 This is helpful to see what alt text is applied (if any) to an image which may provide additional context to the contence of the image, what a screen reader user would hear and if additional context should be added if you are planning to retweet a post.
@@ -23,9 +25,10 @@ View the extension options to turn the different platforms and media types on an
 
 - [x] Twitter images
 - [x] Twitter GIFs
-- [ ] Twitter video captions
-- [-] Facebook (experimental, single image posts working)
-- [-] Instagram (experimental, single image posts working)
+- [x] Facebook (experimental, single image posts working)
+- [x] Instagram (experimental, single image posts working)
+- [ ] LinkedIn
+- [ ] Tweetdeck
 
 ## To test
 
