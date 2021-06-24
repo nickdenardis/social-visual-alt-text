@@ -4,6 +4,7 @@ let options = {
     twitterGifs: true,
     instagramImages: true,
     facebookImages: true,
+    tweetdeckImages: true,
     colorNoAlt: "#FF0000",
     colorAltBg: "#0000FF",
     aiColorAltBg: "#750238",
@@ -13,11 +14,23 @@ let options = {
 // Get the users preferences
 chrome.storage.sync.get(["options"], function (result) {
     if (result.options) {
-        options.twitterImages =
-            result.options.twitterImages || options.twitterImages;
-        options.twitterGifs = result.options.twitterGifs || options.twitterGifs;
-        options.instagramImages =
-            result.options.instagramImages || options.instagramImages;
+        options.twitterImages = result.options.hasOwnProperty("twitterImages")
+            ? result.options.twitterImages
+            : options.twitterImages;
+        options.twitterGifs = result.options.hasOwnProperty("twitterGifs")
+            ? result.options.twitterGifs
+            : options.twitterGifs;
+        options.instagramImages = result.options.hasOwnProperty(
+            "instagramImages"
+        )
+            ? result.options.instagramImages
+            : options.instagramImages;
+        options.tweetdeckImages = result.options.hasOwnProperty(
+            "tweetdeckImages"
+        )
+            ? result.options.tweetdeckImages
+            : options.tweetdeckImages;
+
         options.colorNoAlt = result.options.colorNoAlt || options.colorNoAlt;
         options.colorAltBg = result.options.colorAltBg || options.colorAltBg;
         options.aiColorAltBg =
@@ -56,6 +69,54 @@ let insertAlt = function () {
               'div[role="feed"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div[role="main"] div[role="article"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div[data-pagelet="ProfileTimeline"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div#pagelet_timeline_main_column img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([src*="50x50"])'
           )
         : [];
+
+    // Tweetdeck images
+    const tweetdeckImages = options.tweetdeckImages
+        ? document.querySelectorAll(
+              "div.js-tweet a.js-media-image-link, div.js-modal-panel img.media-img"
+          )
+        : [];
+
+    tweetdeckImages.forEach(function (tdImage) {
+        if (tdImage.getAttribute("data-altdisplayed") !== "true") {
+            // Tweetdeck June 2021 visible container (single image working)
+            let imageLink = tdImage.parentElement;
+
+            // Container for visible text
+            const altText = document.createElement("div");
+            altText.setAttribute("aria-hidden", "true");
+            altText.style.borderBottomRightRadius = "14px";
+            altText.style.borderBottomLeftRadius = "14px";
+
+            // Move around the border radius
+            tdImage.style.borderBottomRightRadius = "0px";
+            tdImage.style.borderBottomLeftRadius = "0px";
+
+            if (
+                !tdImage.getAttribute("title") &&
+                !tdImage.getAttribute("alt")
+            ) {
+                altText.style.backgroundColor = options.colorNoAlt;
+                altText.style.height = "12px";
+            } else {
+                altText.style.color = options.colorAltText;
+                altText.style.backgroundColor = options.colorAltBg;
+                altText.style.fontSize = "14px";
+                altText.style.padding = "4px 8px";
+                altText.style.fontFamily =
+                    'Arial, "Helvetica Neue", Helvetica, sans-serif';
+                altText.textContent =
+                    tdImage.getAttribute("alt") ||
+                    tdImage.getAttribute("title");
+            }
+
+            if (imageLink) {
+                imageLink.append(altText);
+            }
+
+            tdImage.setAttribute("data-altdisplayed", "true");
+        }
+    });
 
     facebookImages.forEach(function (fbImage) {
         if (fbImage.getAttribute("data-altdisplayed") !== "true") {

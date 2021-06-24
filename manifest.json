@@ -1,7 +1,7 @@
 {
   "name": "Social visual alt text",
   "description": "Visually show alternative text of social media images",
-  "version": "0.5",
+  "version": "0.6",
   "manifest_version": 3,
   "options_ui": {
     "page": "options.html",
@@ -11,6 +11,7 @@
     {
       "matches": [
         "https://twitter.com/*",
+        "https://tweetdeck.twitter.com/*",
         "https://www.instagram.com/*",
         "https://www.facebook.com/*"
       ],
@@ -20,7 +21,7 @@
   ],
   "permissions": ["storage"],
   "host_permissions": [
-    "https://twitter.com/",
+    "https://*.twitter.com/",
     "https://www.instagram.com/",
     "https://www.facebook.com/"
   ],

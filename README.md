@@ -27,8 +27,8 @@ View the extension options to turn the different platforms and media types on an
 - [x] Twitter GIFs
 - [x] Facebook (experimental, single image posts working)
 - [x] Instagram (experimental, single image posts working)
+- [x] Tweetdeck (experimental, single image posts working)
 - [ ] LinkedIn
-- [ ] Tweetdeck
 
 ## To test
 
@@ -65,6 +65,13 @@ View the extension options to turn the different platforms and media types on an
 | Human alt text | AI alt text |
 |--------|--------|
 | ![Single image post with alt text underneith](https://nickdenardis.github.io/social-visual-alt-text/assets/facebook-example-single-image.png) | ![Single image post with alt text underneith, older interface](https://nickdenardis.github.io/social-visual-alt-text/assets/facebook-example-single-image-ai.png)
+
+## Tweetdeck examples
+
+| Photo with alt | Photo without alt |
+|--------|--------|
+| ![Three columns of images, the first with alt text, second without and third GIF without](https://nickdenardis.github.io/social-visual-alt-text/assets/tweetdeck-example-three-column-images.png) | ![Tweetdeck modal with a single image showing alt text below](https://nickdenardis.github.io/social-visual-alt-text/assets/tweetdeck-example-modal-image.png)
+
 
 ## Licensing
 
