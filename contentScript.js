@@ -59,7 +59,7 @@ let insertAlt = function () {
     // Instagram images
     const instagramImages = options.instagramImages
         ? document.querySelectorAll(
-              'main article img[src^="https://instagram"]:not([data-testid="user-avatar"])'
+              'main article img[src^="https://scontent"]:not([data-testid="user-avatar"])'
           )
         : [];
 
