@@ -5,6 +5,7 @@ let options = {
     instagramImages: true,
     facebookImages: true,
     tweetdeckImages: true,
+    linkedinImages: true,
     colorNoAlt: "#FF0000",
     colorAltBg: "#0000FF",
     aiColorAltBg: "#750238",
@@ -30,6 +31,10 @@ chrome.storage.sync.get(["options"], function (result) {
         )
             ? result.options.tweetdeckImages
             : options.tweetdeckImages;
+
+        options.linkedinImages = result.options.hasOwnProperty("linkedinImages")
+            ? result.options.linkedinImages
+            : options.linkedinImages;
 
         options.colorNoAlt = result.options.colorNoAlt || options.colorNoAlt;
         options.colorAltBg = result.options.colorAltBg || options.colorAltBg;
@@ -76,6 +81,62 @@ let insertAlt = function () {
               "div.js-tweet a.js-media-image-link, div.js-modal-panel img.media-img"
           )
         : [];
+
+    // LinkedIn images
+    const linkedinImages = options.linkedinImages
+        ? document.querySelectorAll(
+              "div.feed-shared-image img.feed-shared-image__image"
+          )
+        : [];
+
+    linkedinImages.forEach(function (lnImage) {
+        if (lnImage.getAttribute("data-altdisplayed") !== "true") {
+            let imageLink =
+                lnImage.parentElement.parentElement.parentElement.parentElement
+                    .parentElement;
+
+            // Container for visible text
+            const altText = document.createElement("div");
+            altText.setAttribute("aria-hidden", "true");
+            altText.style.borderBottomRightRadius = "14px";
+            altText.style.borderBottomLeftRadius = "14px";
+
+            // Move around the border radius
+            lnImage.style.borderBottomRightRadius = "0px";
+            lnImage.style.borderBottomLeftRadius = "0px";
+
+            if (
+                !lnImage.getAttribute("alt") ||
+                lnImage.getAttribute("alt") ==
+                    "No alternative text description for this image"
+            ) {
+                altText.style.backgroundColor = options.colorNoAlt;
+                altText.style.height = "12px";
+            } else if (lnImage.getAttribute("alt").includes("Image preview")) {
+                altText.style.color = options.colorAltText;
+                altText.style.backgroundColor = options.aiColorAltBg;
+                altText.style.fontSize = "18px";
+                altText.style.padding = "4px 8px";
+                altText.style.fontFamily =
+                    'Arial, "Helvetica Neue", Helvetica, sans-serif';
+                altText.textContent = lnImage.getAttribute("alt");
+            } else {
+                altText.style.color = options.colorAltText;
+                altText.style.backgroundColor = options.colorAltBg;
+                altText.style.fontSize = "14px";
+                altText.style.padding = "4px 8px";
+                altText.style.fontFamily =
+                    'Arial, "Helvetica Neue", Helvetica, sans-serif';
+                altText.textContent = lnImage.getAttribute("alt");
+            }
+
+            if (imageLink) {
+                imageLink.append(altText);
+            }
+
+            lnImage.setAttribute("data-altdisplayed", "true");
+        }
+    });
 
     tweetdeckImages.forEach(function (tdImage) {
         if (tdImage.getAttribute("data-altdisplayed") !== "true") {

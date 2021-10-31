@@ -5,6 +5,7 @@ let default_options = {
     instagramImages: true,
     facebookImages: true,
     tweetdeckImages: true,
+    linkedinImages: true,
     colorNoAlt: "#FF0000",
     colorAltBg: "#0000FF",
     aiColorAltBg: "#750238",
@@ -19,6 +20,7 @@ function save_options() {
         instagramImages: document.getElementById("instagram_images").checked,
         facebookImages: document.getElementById("facebook_images").checked,
         tweetdeckImages: document.getElementById("tweetdeck_images").checked,
+        linkedinImages: document.getElementById("linkedin_images").checked,
         colorNoAlt: document.getElementById("color_no_alt").value,
         colorAltBg: document.getElementById("color_alt_background").value,
         aiColorAltBg: document.getElementById("ai_color_alt_background").value,
@@ -72,6 +74,11 @@ function restore_options() {
                 items.options.hasOwnProperty("tweetdeckImages")
                     ? items.options.tweetdeckImages
                     : default_options.tweetdeckImages;
+
+            document.getElementById("linkedin_images").checked =
+                items.options.hasOwnProperty("linkedinImages")
+                    ? items.options.linkedinImages
+                    : default_options.linkedinImages;
 
             document.getElementById("color_no_alt").value =
                 items.options.colorNoAlt || default_options.colorNoAlt;

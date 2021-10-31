@@ -28,7 +28,7 @@ View the extension options to turn the different platforms and media types on an
 - [x] Facebook (experimental, single image posts working)
 - [x] Instagram (experimental, single image posts working)
 - [x] Tweetdeck (experimental, single image posts working)
-- [ ] LinkedIn
+- [x] LinkedIn (experimental)
 
 ## To test
 
