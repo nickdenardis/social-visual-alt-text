@@ -233,6 +233,7 @@ let insertAlt = function () {
             // Container for visible text
             const altText = document.createElement("div");
             altText.setAttribute("aria-hidden", "true");
+            altText.style.maxWidth = "600px";
 
             if (
                 !igImage.getAttribute("alt") ||
