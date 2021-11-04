@@ -30,20 +30,6 @@ View the extension options to turn the different platforms and media types on an
 - [x] Tweetdeck (experimental, single image posts working)
 - [x] LinkedIn (experimental)
 
-## To test
-
-1. [Download the zip of the `main` branch](https://github.com/nickdenardis/social-visual-alt-text/archive/refs/heads/main.zip)
-2. Open Chrome "Manage Extensions" and enable "Developer mode"
-3. Unzip and select "Load unpacked"
-4. Find the unzipped directory and choose "Open"
-
-## Contributing
-
-1. Please open an issue before submitting a pull request
-2. Fork the `nickdenardis/social-visual-alt-text` repository
-3. Make your changes on the fork
-4. Submit a PR to the `nickdenardis/social-visual-alt-text` `main` branch
-
 ## Twitter examples
 
 | Photo with alt | Photo without alt |
@@ -72,6 +58,24 @@ View the extension options to turn the different platforms and media types on an
 |--------|--------|
 | ![Three columns of images, the first with alt text, second without and third GIF without](https://nickdenardis.github.io/social-visual-alt-text/assets/tweetdeck-example-three-column-images.png) | ![Tweetdeck modal with a single image showing alt text below](https://nickdenardis.github.io/social-visual-alt-text/assets/tweetdeck-example-modal-image.png)
 
+## To package
+
+1. Chrome: `zip -r -FS ../social-visual-alt-text-chrome.zip * --exclude .git*`
+2. Firefox: `sed -i '' 's/: 3,/: 2,/g' manifest.json && zip -r -FS ../social-visual-alt-text-ff.zip * --exclude .git* && git checkout manifest.json`
+
+## To test
+
+1. [Download the zip of the `main` branch](https://github.com/nickdenardis/social-visual-alt-text/archive/refs/heads/main.zip)
+2. Open Chrome "Manage Extensions" and enable "Developer mode"
+3. Unzip and select "Load unpacked"
+4. Find the unzipped directory and choose "Open"
+
+## Contributing
+
+1. Please open an issue before submitting a pull request
+2. Fork the `nickdenardis/social-visual-alt-text` repository
+3. Make your changes on the fork
+4. Submit a PR to the `nickdenardis/social-visual-alt-text` `main` branch
 
 ## Licensing
 
