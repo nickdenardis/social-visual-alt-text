@@ -317,11 +317,11 @@ let insertAlt = function () {
             // If there are multiple images
             if (imageLink) {
                 const imageCount =
-                    imageLink.parentElement.querySelectorAll("a");
+                    imageLink.parentElement.parentElement.querySelectorAll("a");
                 if (imageCount.length > 1) {
                     imageLink =
                         imageLink.parentElement.parentElement.parentElement
-                            .parentElement.parentElement;
+                            .parentElement.parentElement.parentElement;
                 }
             }
 
