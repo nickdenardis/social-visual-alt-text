@@ -275,11 +275,11 @@ let insertAlt = function () {
 
     timelineGifs.forEach(function (userGif) {
         if (userGif.getAttribute("data-altdisplayed") !== "true") {
-            // Twitter June 2021 visible container
+            // Twitter August 2022 visible container
             let gifLink =
                 userGif.parentElement.parentElement.parentElement.parentElement
                     .parentElement.parentElement.parentElement.parentElement
-                    .parentElement.parentElement;
+                    .parentElement.parentElement.parentElement;
 
             // Container for visible text
             const altText = document.createElement("div");
