@@ -85,7 +85,7 @@ let insertAlt = function () {
     // LinkedIn images
     const linkedinImages = options.linkedinImages
         ? document.querySelectorAll(
-              "div.feed-shared-image img.feed-shared-image__image"
+              "div.ivm-view-attr__img-wrapper img.update-components-image__image"
           )
         : [];
 
@@ -279,7 +279,7 @@ let insertAlt = function () {
             let gifLink =
                 userGif.parentElement.parentElement.parentElement.parentElement
                     .parentElement.parentElement.parentElement.parentElement
-                    .parentElement.parentElement.parentElement;
+                    .parentElement.parentElement.parentElement.parentElement;
 
             // Container for visible text
             const altText = document.createElement("div");
@@ -317,7 +317,8 @@ let insertAlt = function () {
             // If there are multiple images
             if (imageLink) {
                 const imageCount =
-                    imageLink.parentElement.parentElement.querySelectorAll("a");
+                    imageLink.parentElement.parentElement.parentElement.querySelectorAll("a");
+
                 if (imageCount.length > 1) {
                     imageLink =
                         imageLink.parentElement.parentElement.parentElement
