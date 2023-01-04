@@ -77,6 +77,13 @@ View the extension options to turn the different platforms and media types on an
 3. Make your changes on the fork
 4. Submit a PR to the `nickdenardis/social-visual-alt-text` `main` branch
 
+## Development
+
+* [ ] Create common settings file
+* [x] Run each script only per host
+* [ ] Add the not CSS selector for the displayedalt=true
+* [ ] Change to run after load and then on scroll or DOM change only
+
 ## Licensing
 
 Social visual alt is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
