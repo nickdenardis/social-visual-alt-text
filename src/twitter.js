@@ -21,7 +21,7 @@ let insertTWAlt = function () {
             // If there are multiple images
             if (imageLink) {
                 const imageCount =
-                    imageLink.parentElement.parentElement.parentElement.querySelectorAll(
+                    imageLink.parentElement.parentElement.parentElement.parentElement.querySelectorAll(
                         "a"
                     );
 
@@ -29,6 +29,11 @@ let insertTWAlt = function () {
                     imageLink =
                         imageLink.parentElement.parentElement.parentElement
                             .parentElement.parentElement.parentElement;
+                }
+
+                // There is an extra div on the three/four image grid
+                if (imageCount.length >= 3) {
+                    imageLink = imageLink.parentElement;
                 }
             }
 
