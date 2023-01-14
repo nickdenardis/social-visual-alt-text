@@ -45,9 +45,12 @@ let mastodonLoop = function mastodonLoop() {
 };
 
 async function initMastodon() {
-    const result = await getOptions();
-    if (result.mastodonImages !== false) {
-        mastodonLoop();
+    // Only continue and pull options if this is a Mastodon site (could be at any URL)
+    if (document.getElementById('mastodon') !== null) {
+        const result = await getOptions();
+        if (result.mastodonImages !== false) {
+            mastodonLoop();
+        }
     }
 }
 
