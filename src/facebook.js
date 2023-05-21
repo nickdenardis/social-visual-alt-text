@@ -3,16 +3,27 @@ let insertFBAlt = function () {
     // Facebook images
     const facebookImages = options.facebookImages
         ? document.querySelectorAll(
-              'div[role="feed"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div[role="main"] div[role="article"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div[data-pagelet="ProfileTimeline"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div#pagelet_timeline_main_column img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([src*="50x50"])'
+              'div.x1unhpq9 img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]):not([aria-label*="stories"]), div.xw7yly9 img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div[role="feed"] img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([height="20"]), div#pagelet_timeline_main_column img[src^="https://scontent"]:not([alt^="Profile Photo of"]):not([src*="50x50"])'
           )
         : [];
 
     facebookImages.forEach(function (fbImage) {
         if (fbImage.getAttribute("data-altdisplayed") !== "true") {
-            // Facebook June 2021 visible container (single image working)
-            let imageLink =
-                fbImage.parentElement.parentElement.parentElement.parentElement
-                    .parentElement;
+            // Check if there are multiple images
+            let imageLink = fbImage.closest("a");
+            if (imageLink) {
+                const imageCount =
+                    imageLink.parentElement.parentElement.querySelectorAll("a");
+                if (imageCount.length > 1) {
+                    imageLink =
+                        imageLink.parentElement.parentElement.parentElement;
+                } else {
+                    // Facebook June 2021 visible container (single image working)
+                    imageLink =
+                        fbImage.parentElement.parentElement.parentElement
+                            .parentElement.parentElement;
+                }
+            }
 
             // Container for visible text
             const altText = document.createElement("div");
