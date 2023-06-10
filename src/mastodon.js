@@ -4,13 +4,16 @@ let insertMDAlt = function () {
         ? document.querySelectorAll("#mastodon .media-gallery__item img")
         : [];
 
+    const visualAlt = document.createElement('div');
+    visualAlt.setAttribute("aria-hidden", "true");
+    let imageContainer = null;
+
     mastodonImages.forEach(function (mDImage) {
         if (mDImage.getAttribute("data-altdisplayed") !== "true") {
-            let imageLink = mDImage.parentElement.parentElement.parentElement;
+            imageContainer = mDImage.parentElement.parentElement.parentElement;
 
             // Container for visible text
             const altText = document.createElement("div");
-            altText.setAttribute("aria-hidden", "true");
             altText.style.borderBottomRightRadius = "14px";
             altText.style.borderBottomLeftRadius = "14px";
 
@@ -30,13 +33,17 @@ let insertMDAlt = function () {
                 altText.textContent = mDImage.getAttribute("alt");
             }
 
-            if (imageLink) {
-                imageLink.after(altText);
+            if (imageContainer) {
+                visualAlt.appendChild(altText);
             }
 
             mDImage.setAttribute("data-altdisplayed", "true");
         }
     });
+
+    if (imageContainer) {
+        imageContainer.after(visualAlt);
+    }
 };
 
 let mastodonLoop = function mastodonLoop() {
