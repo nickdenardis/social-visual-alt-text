@@ -4,7 +4,7 @@ let insertMDAlt = function () {
         ? document.querySelectorAll("#mastodon .media-gallery__item img")
         : [];
 
-    const visualAlt = document.createElement('div');
+    let visualAlt = document.createElement("div");
     visualAlt.setAttribute("aria-hidden", "true");
     let imageContainer = null;
 
@@ -13,7 +13,7 @@ let insertMDAlt = function () {
             imageContainer = mDImage.parentElement.parentElement.parentElement;
 
             // Container for visible text
-            const altText = document.createElement("div");
+            let altText = document.createElement("div");
             altText.style.borderBottomRightRadius = "14px";
             altText.style.borderBottomLeftRadius = "14px";
 
@@ -38,12 +38,13 @@ let insertMDAlt = function () {
             }
 
             mDImage.setAttribute("data-altdisplayed", "true");
+
+            if (imageContainer) {
+                imageContainer.after(visualAlt);
+                visualAlt = document.createElement("div");
+            }
         }
     });
-
-    if (imageContainer) {
-        imageContainer.after(visualAlt);
-    }
 };
 
 let mastodonLoop = function mastodonLoop() {
@@ -53,7 +54,7 @@ let mastodonLoop = function mastodonLoop() {
 
 async function initMastodon() {
     // Only continue and pull options if this is a Mastodon site (could be at any URL)
-    if (document.getElementById('mastodon') !== null) {
+    if (document.getElementById("mastodon") !== null) {
         const result = await getOptions();
         if (result.mastodonImages !== false) {
             mastodonLoop();
