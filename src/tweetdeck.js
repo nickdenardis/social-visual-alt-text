@@ -1,16 +1,27 @@
 // Search for items with alt text
 let insertTDAlt = function () {
+    let image_selector =
+        "div.js-tweet a.js-media-image-link, div.js-modal-panel img.media-img";
+    const new_version = document.querySelectorAll("div.js-tweet").length == 0;
+
+    // New version of Tweetdeck (July 2023) overrides
+    if (new_version) {
+        image_selector =
+            'div[data-testid="tweetPhoto"] img:not([alt="Embedded video"])';
+    }
+
     // Tweetdeck images
     const tweetdeckImages = options.tweetdeckImages
-        ? document.querySelectorAll(
-              "div.js-tweet a.js-media-image-link, div.js-modal-panel img.media-img"
-          )
+        ? document.querySelectorAll(image_selector)
         : [];
 
     tweetdeckImages.forEach(function (tdImage) {
         if (tdImage.getAttribute("data-altdisplayed") !== "true") {
-            // Tweetdeck June 2021 visible container (single image working)
-            let imageLink = tdImage.parentElement;
+            // Determine where to insert the visual alt text
+            let imageLink = new_version
+                ? tdImage.parentElement.parentElement.parentElement
+                      .parentElement.parentElement.parentElement.parentElement
+                : tdImage.parentElement;
 
             // Container for visible text
             const altText = document.createElement("div");
@@ -23,8 +34,9 @@ let insertTDAlt = function () {
             tdImage.style.borderBottomLeftRadius = "0px";
 
             if (
-                !tdImage.getAttribute("title") &&
-                !tdImage.getAttribute("alt")
+                (!tdImage.getAttribute("title") &&
+                    !tdImage.getAttribute("alt")) ||
+                tdImage.getAttribute("alt") == "Image"
             ) {
                 altText.style.backgroundColor = options.colorNoAlt;
                 altText.style.height = "12px";
