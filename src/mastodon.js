@@ -1,48 +1,54 @@
-// Search for items with alt text
+// Search for all media gallery containers
 let insertMDAlt = function () {
-    const mastodonImages = options.mastodonImages
-        ? document.querySelectorAll("#mastodon .media-gallery__item img")
+
+    const mastodonMediaGalleries = options.mastodonImages
+        ? document.querySelectorAll("#mastodon .media-gallery")
         : [];
 
-    let visualAlt = document.createElement("div");
-    visualAlt.setAttribute("aria-hidden", "true");
-    let imageContainer = null;
+    // Iterate over all media galleries
+    mastodonMediaGalleries.forEach(function (mDMediaGallery) {
 
-    mastodonImages.forEach(function (mDImage) {
-        if (mDImage.getAttribute("data-altdisplayed") !== "true") {
-            imageContainer = mDImage.parentElement.parentElement.parentElement;
+        if (mDMediaGallery.getAttribute("data-altdisplayed") !== "true") {
 
-            // Container for visible text
-            let altText = document.createElement("div");
-            altText.style.borderBottomRightRadius = "14px";
-            altText.style.borderBottomLeftRadius = "14px";
+            let visualAlt = document.createElement("div");
+            visualAlt.setAttribute("aria-hidden", "true");
+            
+            let mastodonImages = mDMediaGallery.querySelectorAll('.media-gallery__item img');
 
-            if (
-                !mDImage.getAttribute("alt") ||
-                mDImage.getAttribute("alt") == ""
-            ) {
-                altText.style.backgroundColor = options.colorNoAlt;
-                altText.style.height = "12px";
-            } else {
-                altText.style.color = options.colorAltText;
-                altText.style.backgroundColor = options.colorAltBg;
-                altText.style.fontSize = "14px";
-                altText.style.padding = "4px 8px";
-                altText.style.fontFamily =
-                    'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.textContent = mDImage.getAttribute("alt");
-            }
+            // Iterate over all images in that media gallery
+            mastodonImages.forEach(function (mDImage) {
 
-            if (imageContainer) {
-                visualAlt.appendChild(altText);
-            }
+                if (mDImage.getAttribute("data-altdisplayed") !== "true") {
 
-            mDImage.setAttribute("data-altdisplayed", "true");
+                    // Container for visible text
+                    let altText = document.createElement("div");
+                    altText.style.borderBottomRightRadius = "14px";
+                    altText.style.borderBottomLeftRadius = "14px";
 
-            if (imageContainer) {
-                imageContainer.after(visualAlt);
-                visualAlt = document.createElement("div");
-            }
+                    if (
+                        !mDImage.getAttribute("alt") ||
+                        mDImage.getAttribute("alt") == ""
+                    ) {
+                        altText.style.backgroundColor = options.colorNoAlt;
+                        altText.style.height = "12px";
+                    } else {
+                        altText.style.color = options.colorAltText;
+                        altText.style.backgroundColor = options.colorAltBg;
+                        altText.style.fontSize = "14px";
+                        altText.style.padding = "4px 8px";
+                        altText.style.fontFamily =
+                            'Arial, "Helvetica Neue", Helvetica, sans-serif';
+                        altText.textContent = mDImage.getAttribute("alt");
+                    }
+
+                    visualAlt.appendChild(altText);
+                    mDImage.setAttribute("data-altdisplayed", "true");
+                }
+            });
+
+            // Add container with all alts to this particular media gallery
+            mDMediaGallery.after(visualAlt);
+            mDMediaGallery.setAttribute("data-altdisplayed", "true");
         }
     });
 };
