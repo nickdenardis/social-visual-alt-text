@@ -22,8 +22,8 @@ let insertMDAlt = function () {
 
                     // Container for visible text
                     let altText = document.createElement("div");
-                    altText.style.borderBottomRightRadius = "14px";
-                    altText.style.borderBottomLeftRadius = "14px";
+                    altText.style.borderRadius = "4px";
+                    altText.style.marginTop = "1px";
 
                     if (
                         !mDImage.getAttribute("alt") ||
@@ -37,7 +37,7 @@ let insertMDAlt = function () {
                         altText.style.fontSize = "14px";
                         altText.style.padding = "4px 8px";
                         altText.style.fontFamily =
-                            'Arial, "Helvetica Neue", Helvetica, sans-serif';
+                            "Arial, 'Helvetica Neue', Helvetica, sans-serif";
                         altText.textContent = mDImage.getAttribute("alt");
                     }
 
