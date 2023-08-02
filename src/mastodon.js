@@ -22,9 +22,11 @@ let insertMDAlt = function () {
 
                     // Container for visible text
                     let altText = document.createElement("div");
+                    altText.className = "status__content";
+                    altText.style.fontSize = "0.9rem";
                     altText.style.borderRadius = "4px";
                     altText.style.marginTop = "1px";
-
+                    altText.style.boxSizing = "border-box";
                     if (
                         !mDImage.getAttribute("alt") ||
                         mDImage.getAttribute("alt") == ""
@@ -34,10 +36,7 @@ let insertMDAlt = function () {
                     } else {
                         altText.style.color = options.colorAltText;
                         altText.style.backgroundColor = options.colorAltBg;
-                        altText.style.fontSize = "14px";
-                        altText.style.padding = "4px 8px";
-                        altText.style.fontFamily =
-                            "Arial, 'Helvetica Neue', Helvetica, sans-serif";
+                        altText.style.padding = "0.75rem 1rem";
                         altText.textContent = mDImage.getAttribute("alt");
                     }
 
