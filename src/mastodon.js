@@ -13,7 +13,7 @@ let insertMDAlt = function () {
             let visualAlt = document.createElement("div");
             visualAlt.setAttribute("aria-hidden", "true");
             
-            let mastodonImages = mDMediaGallery.querySelectorAll('.media-gallery__item img');
+            let mastodonImages = mDMediaGallery.querySelectorAll('.media-gallery__item img, .media-gallery__item video');
 
             // Iterate over all images in that media gallery
             mastodonImages.forEach(function (mDImage) {
@@ -27,17 +27,15 @@ let insertMDAlt = function () {
                     altText.style.borderRadius = "4px";
                     altText.style.marginTop = "1px";
                     altText.style.boxSizing = "border-box";
-                    if (
-                        !mDImage.getAttribute("alt") ||
-                        mDImage.getAttribute("alt") == ""
-                    ) {
+                    let alt = mDImage.getAttribute("alt") || mDImage.getAttribute("aria-label") || mDImage.getAttribute("title");
+                    if (!alt) {
                         altText.style.backgroundColor = options.colorNoAlt;
                         altText.style.height = "12px";
                     } else {
                         altText.style.color = options.colorAltText;
                         altText.style.backgroundColor = options.colorAltBg;
                         altText.style.padding = "0.75rem 1rem";
-                        altText.textContent = mDImage.getAttribute("alt");
+                        altText.textContent = alt;
                     }
 
                     visualAlt.appendChild(altText);
