@@ -71,7 +71,8 @@ let insertTWAlt = function () {
             let gifLink =
                 userGif.parentElement.parentElement.parentElement.parentElement
                     .parentElement.parentElement.parentElement.parentElement
-                    .parentElement.parentElement.parentElement.parentElement;
+                    .parentElement.parentElement.parentElement.parentElement
+                    .parentElement;
 
             // Container for visible text
             const altText = document.createElement("div");
