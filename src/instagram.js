@@ -3,7 +3,7 @@ let insertIGAlt = function () {
     // Instagram images
     const instagramImages = options.instagramImages
         ? document.querySelectorAll(
-              'main article img[src^="https://scontent"]:not([alt*="profile picture"]), main article img[src^="https://instagram"]:not([alt*="profile picture"])'
+              'main article img[src^="https://scontent"]:not([draggable="false"], [alt*="highlight story picture"]), div[role="button"] img[src^="https://scontent"]:not([draggable="false"], [alt*="highlight story picture"]), main article img[src^="https://instagram"]:not([alt*="profile picture"])'
           )
         : [];
 
@@ -15,7 +15,15 @@ let insertIGAlt = function () {
             // Container for visible text
             const altText = document.createElement("div");
             altText.setAttribute("aria-hidden", "true");
-            altText.style.maxWidth = "600px";
+            // altText.style.maxWidth = "600px";
+
+            let hasMultipleImages = false;
+            let mainSection = document.querySelector('section main')
+            if (mainSection !== null) {
+                hasMultipleImages = mainSection.querySelector('ul') !== null;
+                imageLink = document.querySelector('section main').firstElementChild.firstElementChild;
+            }
+            
 
             if (
                 !igImage.getAttribute("alt") ||
@@ -63,8 +71,16 @@ let instagramLoop = function instagramLoop() {
 
 async function initInstagram() {
     const result = await getOptions();
+    
     if (result.instagramImages !== false) {
-        instagramLoop();
+        // If on an individual instagram page
+        const url = window.location.href;
+        const onViewPage = url.includes('/p/') && url.split('/').length > 2;
+        const onReelPage = url.includes('/reel/') && url.split('/').length > 2;
+
+        if (!onReelPage) {
+            (onViewPage)?insertIGAlt():instagramLoop();
+        }
     }
 }
 
