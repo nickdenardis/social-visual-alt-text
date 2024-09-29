@@ -3,7 +3,7 @@ let insertIGAlt = function () {
     // Instagram images
     const instagramImages = options.instagramImages
         ? document.querySelectorAll(
-              'main article img[src^="https://scontent"]:not([alt*="profile picture"]), main article img[src^="https://instagram"]:not([alt*="profile picture"])'
+              'main article img[src^="https://scontent"]:not([draggable="false"], [alt*="highlight story picture"]), div[role="button"] img[src^="https://scontent"]:not([draggable="false"], [alt*="highlight story picture"])'
           )
         : [];
 
@@ -15,15 +15,36 @@ let insertIGAlt = function () {
             // Container for visible text
             const altText = document.createElement("div");
             altText.setAttribute("aria-hidden", "true");
-            altText.style.maxWidth = "600px";
+
+            const onViewPage = window.location.href.includes("/p/");
+            const inOverlay = igImage.closest("article");
+
+            // Deteremine where to put the alt text in the DOM
+            if (!onViewPage) {
+                imageLink = igImage.closest('div[role="button"]');
+            } else if (inOverlay) {
+                imageLink = igImage.closest('div[role="button"]');
+                imageLink =
+                    imageLink.parentElement.parentElement.parentElement
+                        .parentElement.parentElement.parentElement.parentElement
+                        .parentElement;
+            } else {
+                // If on individual item view
+                let hasMultipleImages = false;
+                let mainSection = document.querySelector("section main");
+                if (mainSection !== null) {
+                    hasMultipleImages =
+                        mainSection.querySelector("ul") !== null;
+                    imageLink =
+                        document.querySelector("section main").firstElementChild
+                            .firstElementChild;
+                }
+            }
 
             if (
                 !igImage.getAttribute("alt") ||
                 igImage.getAttribute("alt") == "Image"
             ) {
-                imageLink =
-                    igImage.parentElement.parentElement.parentElement
-                        .parentElement.parentElement;
                 altText.style.backgroundColor = options.colorNoAlt;
                 altText.style.height = "12px";
             } else if (
