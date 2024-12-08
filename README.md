@@ -25,10 +25,12 @@ View the extension options to turn the different platforms and media types on an
 
 - [x] Twitter images
 - [x] Twitter GIFs
-- [x] Facebook (experimental, single image posts working)
-- [x] Instagram (experimental, single image posts working)
-- [x] Tweetdeck (experimental, single image posts working)
-- [x] LinkedIn (experimental)
+- [x] Facebook
+- [x] Instagram
+- [x] Tweetdeck
+- [x] LinkedIn 
+- [x] Mastadon 
+- [x] Bluesky
 
 ## Twitter examples
 
