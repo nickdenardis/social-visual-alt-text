@@ -1,7 +1,7 @@
 {
   "name": "Social visual alt text",
   "description": "Visually show alternative text of social media images",
-  "version": "0.7.17",
+  "version": "0.8.0",
   "manifest_version": 3,
   "options_ui": {
     "page": "options.html",
@@ -36,6 +36,11 @@
     {
       "matches": ["https://www.facebook.com/*"],
       "js": ["src/facebook.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://bsky.app/*"],
+      "js": ["src/bluesky.js"],
       "run_at": "document_end"
     }
   ],

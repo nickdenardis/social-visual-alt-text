@@ -7,6 +7,7 @@ let options = {
     tweetdeckImages: true,
     linkedinImages: true,
     mastodonImages: true,
+    blueskyImages: true,
     colorNoAlt: "#FF0000",
     colorAltBg: "#0000FF",
     aiColorAltBg: "#750238",
@@ -50,6 +51,12 @@ function getOptions() {
                 )
                     ? result.options.mastodonImages
                     : options.mastodonImages;
+
+                options.blueskyImages = result.options.hasOwnProperty(
+                    "blueskyImages"
+                )
+                    ? result.options.blueskyImages
+                    : options.blueskyImages;
 
                 options.colorNoAlt =
                     result.options.colorNoAlt || options.colorNoAlt;

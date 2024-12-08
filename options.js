@@ -7,6 +7,7 @@ let default_options = {
     tweetdeckImages: true,
     linkedinImages: true,
     mastodonImages: true,
+    blueskyImages: true,
     colorNoAlt: "#FF0000",
     colorAltBg: "#0000FF",
     aiColorAltBg: "#750238",
@@ -23,6 +24,7 @@ function save_options() {
         tweetdeckImages: document.getElementById("tweetdeck_images").checked,
         linkedinImages: document.getElementById("linkedin_images").checked,
         mastodonImages: document.getElementById("mastodon_images").checked,
+        blueskyImages: document.getElementById("bluesky_images").checked,
         colorNoAlt: document.getElementById("color_no_alt").value,
         colorAltBg: document.getElementById("color_alt_background").value,
         aiColorAltBg: document.getElementById("ai_color_alt_background").value,
@@ -86,6 +88,11 @@ function restore_options() {
                 items.options.hasOwnProperty("mastodonImages")
                     ? items.options.mastodonImages
                     : default_options.mastodonImages;
+            
+            document.getElementById("bluesky_images").checked =
+                items.options.hasOwnProperty("blueskyImages")
+                    ? items.options.blueskyImages
+                    : default_options.blueskyImages;
 
             document.getElementById("color_no_alt").value =
                 items.options.colorNoAlt || default_options.colorNoAlt;
