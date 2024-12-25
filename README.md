@@ -31,6 +31,7 @@ View the extension options to turn the different platforms and media types on an
 - [x] LinkedIn 
 - [x] Mastadon 
 - [x] Bluesky
+- [x] Threads
 
 ## Twitter examples
 

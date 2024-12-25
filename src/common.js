@@ -8,6 +8,7 @@ let options = {
     linkedinImages: true,
     mastodonImages: true,
     blueskyImages: true,
+    threadsImages: true,
     colorNoAlt: "#FF0000",
     colorAltBg: "#0000FF",
     aiColorAltBg: "#750238",
@@ -57,6 +58,12 @@ function getOptions() {
                 )
                     ? result.options.blueskyImages
                     : options.blueskyImages;
+
+                options.threadsImages = result.options.hasOwnProperty(
+                    "threadsImages"
+                )
+                    ? result.options.threadsImages
+                    : options.threadsImages;
 
                 options.colorNoAlt =
                     result.options.colorNoAlt || options.colorNoAlt;
