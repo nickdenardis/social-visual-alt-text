@@ -87,6 +87,12 @@ View the extension options to turn the different platforms and media types on an
 * [ ] Add the not CSS selector for the displayedalt=true
 * [ ] Change to run after load and then on scroll or DOM change only
 
+## Support the development of this extension
+
+<p><a href="https://buymeacoffee.com/nickdenardis" target="_blank" rel="noopener noreferrer">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;">
+</a></p>
+
 ## Licensing
 
 Social visual alt is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

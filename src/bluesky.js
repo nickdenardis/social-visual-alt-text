@@ -2,7 +2,7 @@ let insertAlt = function () {
     // Images (single or multiple)
     const timelineImages = options.blueskyImages
         ? document.querySelectorAll(
-              'main div[data-testid="contentHider-post"] img[src^="https://cdn.bsky.app/img/feed_thumbnail/"]'
+              'main div[data-testid="contentHider-post"] img[src^="https://cdn.bsky.app/img/feed_thumbnail/"], main div[data-expoimage="true"] img[src^="https://cdn.bsky.app/img/feed_thumbnail/"]'
           )
         : [];
 
