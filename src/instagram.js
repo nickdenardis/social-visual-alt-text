@@ -3,7 +3,7 @@ let insertIGAlt = function () {
     // Instagram images
     const instagramImages = options.instagramImages
         ? document.querySelectorAll(
-              'main article img[src^="https://scontent"]:not([draggable="false"], [alt*="highlight story picture"]), div[role="button"] img[src^="https://scontent"]:not([draggable="false"], [alt*="highlight story picture"])'
+              'main article img[src^="https://scontent"]:not([draggable="false"], [alt*="highlight story picture"]), div[role="button"] img[src^="https://scontent"]:not([draggable="false"], [alt*="highlight story picture"], [alt*="User avatar"])'
           )
         : [];
 
