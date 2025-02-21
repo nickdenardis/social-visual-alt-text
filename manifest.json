@@ -1,7 +1,7 @@
 {
   "name": "Social visual alt text",
   "description": "Visually show alternative text of social media images",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "manifest_version": 3,
   "options_ui": {
     "page": "options.html",

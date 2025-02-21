@@ -35,7 +35,7 @@ let insertLNAlt = function () {
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.textContent = lnImage.getAttribute("alt");
+                altText.insertAdjacentHTML('beforeend', newlineToBr(lnImage.getAttribute("alt")));
             } else {
                 altText.style.color = options.colorAltText;
                 altText.style.backgroundColor = options.colorAltBg;
@@ -43,7 +43,7 @@ let insertLNAlt = function () {
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.textContent = lnImage.getAttribute("alt");
+                altText.insertAdjacentHTML('beforeend', newlineToBr(lnImage.getAttribute("alt")));
             }
 
             if (imageLink) {

@@ -55,7 +55,7 @@ let insertTWAlt = function () {
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.textContent = userImage.getAttribute("alt");
+                altText.insertAdjacentHTML('beforeend', newlineToBr(userImage.getAttribute("alt")));
             }
 
             if (imageLink) {
@@ -92,7 +92,7 @@ let insertTWAlt = function () {
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.textContent = userGif.getAttribute("aria-label");
+                altText.insertAdjacentHTML('beforeend', newlineToBr(userGif.getAttribute("aria-label")));
             }
 
             if (gifLink) {

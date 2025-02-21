@@ -79,3 +79,7 @@ function getOptions() {
         });
     });
 }
+
+function newlineToBr(text) {
+    return text.replace(/\n/g, "<br>");
+}
