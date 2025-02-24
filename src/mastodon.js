@@ -35,7 +35,6 @@ let insertMDAlt = function () {
                         altText.style.color = options.colorAltText;
                         altText.style.backgroundColor = options.colorAltBg;
                         altText.style.padding = "0.75rem 1rem";
-                        altText.textContent = alt;
                         altText.insertAdjacentHTML('beforeend', newlineToBr(alt));
                     }
 
