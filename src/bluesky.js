@@ -105,8 +105,12 @@ let insertAlt = function () {
     timelineVideos.forEach(function (userImage) {
         if (userImage.getAttribute("data-altdisplayed") !== "true") { 
             // Where to put the alt text in the DOM
-            let imageLink =
-                userImage.parentElement.parentElement.parentElement
+            let imageLink = userImage.closest('div[data-testid="contentHider-post"]')
+                ? userImage.parentElement.parentElement.parentElement
+                    .parentElement.parentElement.parentElement
+                    .parentElement.parentElement.parentElement
+                    .parentElement.parentElement.parentElement
+                : userImage.parentElement.parentElement.parentElement
                     .parentElement.parentElement.parentElement;
 
             // Container for visible text
