@@ -44,7 +44,7 @@ let insertAlt = function () {
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(userImage.getAttribute("alt")));
+                altText.insertAdjacentHTML('beforeend', newlineToBr(userImage.getAttribute("alt").replaceAll("<","&lt;")));
             }
 
             // Add the element to the DOM
@@ -82,7 +82,7 @@ let insertAlt = function () {
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(userImage.getAttribute("aria-label")));
+                altText.insertAdjacentHTML('beforeend', newlineToBr(userImage.getAttribute("aria-label").replaceAll("<","&lt;")));
             }
 
             // Add the element to the DOM

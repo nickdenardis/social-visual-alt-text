@@ -57,7 +57,7 @@ let insertIGAlt = function () {
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.textContent = igImage.getAttribute("alt");
+                altText.textContent = igImage.getAttribute("alt").replaceAll("<","&lt;");
             } else {
                 altText.style.color = options.colorAltText;
                 altText.style.backgroundColor = options.colorAltBg;
@@ -65,7 +65,7 @@ let insertIGAlt = function () {
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.textContent = igImage.getAttribute("alt");
+                altText.textContent = igImage.getAttribute("alt").replaceAll("<","&lt;");
             }
 
             if (imageLink) {

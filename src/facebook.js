@@ -45,7 +45,7 @@ let insertFBAlt = function () {
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(fbImage.getAttribute("alt")));
+                altText.insertAdjacentHTML('beforeend', newlineToBr(fbImage.getAttribute("alt").replaceAll("<","&lt;")));
             } else {
                 altText.style.color = options.colorAltText;
                 altText.style.backgroundColor = options.colorAltBg;
@@ -53,7 +53,7 @@ let insertFBAlt = function () {
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(fbImage.getAttribute("alt")));
+                altText.insertAdjacentHTML('beforeend', newlineToBr(fbImage.getAttribute("alt").replaceAll("<","&lt;")));
             }
 
             if (imageLink) {

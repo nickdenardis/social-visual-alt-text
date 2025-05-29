@@ -32,6 +32,7 @@ let insertMDAlt = function () {
                         altText.style.backgroundColor = options.colorNoAlt;
                         altText.style.height = "12px";
                     } else {
+                        alt = alt.replaceAll("<","&lt;"); /* avoid accidental markup alt being rendered */
                         altText.style.color = options.colorAltText;
                         altText.style.backgroundColor = options.colorAltBg;
                         altText.style.padding = "0.75rem 1rem";
