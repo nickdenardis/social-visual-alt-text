@@ -108,10 +108,9 @@ let insertAlt = function () {
 
         if (anchorDiv.getAttribute("data-altdisplayed") !== "true") { 
             // Where to put the alt text in the DOM
-            let imageLink = userImage.closest('div[data-testid="contentHider-post"]')
-                ? anchorDiv.parentElement.parentElement.parentElement
-                    .parentElement.parentElement.parentElement
-                : anchorDiv.parentElement.parentElement;
+            let imageLink =
+                anchorDiv.parentElement.parentElement.parentElement
+                    .parentElement.parentElement;
 
             // Container for visible text
             const altText = document.createElement("div");
