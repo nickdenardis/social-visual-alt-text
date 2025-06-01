@@ -29,21 +29,23 @@ let insertLNAlt = function () {
                 altText.style.backgroundColor = options.colorNoAlt;
                 altText.style.height = "12px";
             } else if (lnImage.getAttribute("alt").includes("Image preview")) {
+                let sanitizedAltText = newlineToBr(lnImage.getAttribute("alt").toHtmlEntities());
                 altText.style.color = options.colorAltText;
                 altText.style.backgroundColor = options.aiColorAltBg;
                 altText.style.fontSize = "18px";
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(lnImage.getAttribute("alt")));
+                altText.insertAdjacentHTML('beforeend', sanitizedAltText);
             } else {
+                let sanitizedAltText = newlineToBr(lnImage.getAttribute("alt").toHtmlEntities());
                 altText.style.color = options.colorAltText;
                 altText.style.backgroundColor = options.colorAltBg;
                 altText.style.fontSize = "14px";
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(lnImage.getAttribute("alt")));
+                altText.insertAdjacentHTML('beforeend', sanitizedAltText);
             }
 
             if (imageLink) {

@@ -45,13 +45,14 @@ let insertAlt = function () {
                 altText.style.backgroundColor = options.colorNoAlt;
                 altText.style.height = "12px";
             } else {
+                let sanitizedAltText = newlineToBr(userImage.getAttribute("alt").toHtmlEntities());
                 altText.style.color = options.colorAltText;
                 altText.style.backgroundColor = options.colorAltBg;
                 altText.style.fontSize = "18px";
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(userImage.getAttribute("alt")));
+                altText.insertAdjacentHTML('beforeend', sanitizedAltText);
             }
 
             // Add the element to the DOM
@@ -83,13 +84,14 @@ let insertAlt = function () {
                 altText.style.backgroundColor = options.colorNoAlt;
                 altText.style.height = "12px";
             } else {
+                let sanitizedAltText = newlineToBr(userImage.getAttribute("aria-label").toHtmlEntities());
                 altText.style.color = options.colorAltText;
                 altText.style.backgroundColor = options.colorAltBg;
                 altText.style.fontSize = "18px";
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(userImage.getAttribute("aria-label")));
+                altText.insertAdjacentHTML('beforeend', sanitizedAltText);
             }
 
             // Add the element to the DOM

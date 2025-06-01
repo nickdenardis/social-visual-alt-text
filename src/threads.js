@@ -38,21 +38,23 @@ let insertAlt = function () {
                 userImage.getAttribute("alt").includes("May be an image of") ||
                 userImage.getAttribute("alt").includes("Photo by")
             ) {
+                let sanitizedAltText = newlineToBr(userImage.getAttribute("alt").toHtmlEntities());
                 altText.style.color = options.colorAltText;
                 altText.style.backgroundColor = options.aiColorAltBg;
                 altText.style.fontSize = "18px";
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(userImage.getAttribute("alt")));
+                altText.insertAdjacentHTML('beforeend', sanitizedAltText);
             } else {
+                let sanitizedAltText = newlineToBr(userImage.getAttribute("alt").toHtmlEntities());
                 altText.style.color = options.colorAltText;
                 altText.style.backgroundColor = options.colorAltBg;
                 altText.style.fontSize = "18px";
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(userImage.getAttribute("alt")));
+                altText.insertAdjacentHTML('beforeend', sanitizedAltText);
             }
 
             // Add the element to the DOM

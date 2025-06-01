@@ -48,7 +48,8 @@ let insertTDAlt = function () {
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
                 let alt_text = tdImage.getAttribute("alt") || tdImage.getAttribute("title");
-                altText.insertAdjacentHTML('beforeend', newlineToBr(alt_text));
+                let sanitizedAltText = newlineToBr(alt_text.toHtmlEntities());
+                altText.insertAdjacentHTML('beforeend', sanitizedAltText);
             }
 
             if (imageLink) {

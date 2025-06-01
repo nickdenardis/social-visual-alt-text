@@ -32,10 +32,11 @@ let insertMDAlt = function () {
                         altText.style.backgroundColor = options.colorNoAlt;
                         altText.style.height = "12px";
                     } else {
+                        let sanitizedAltText = newlineToBr(alt.toHtmlEntities());
                         altText.style.color = options.colorAltText;
                         altText.style.backgroundColor = options.colorAltBg;
                         altText.style.padding = "0.75rem 1rem";
-                        altText.insertAdjacentHTML('beforeend', newlineToBr(alt));
+                        altText.insertAdjacentHTML('beforeend', sanitizedAltText);
                     }
 
                     visualAlt.appendChild(altText);
