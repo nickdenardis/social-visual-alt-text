@@ -49,13 +49,14 @@ let insertTWAlt = function () {
                 altText.style.backgroundColor = options.colorNoAlt;
                 altText.style.height = "12px";
             } else {
+                let sanitizedAltText = newlineToBr(userImage.getAttribute("alt").toHtmlEntities());
                 altText.style.color = options.colorAltText;
                 altText.style.backgroundColor = options.colorAltBg;
                 altText.style.fontSize = "18px";
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(userImage.getAttribute("alt").replaceAll("<","&lt;")));
+                altText.insertAdjacentHTML('beforeend', sanitizedAltText);
             }
 
             if (imageLink) {
@@ -86,13 +87,14 @@ let insertTWAlt = function () {
                 altText.style.backgroundColor = options.colorNoAlt;
                 altText.style.height = "12px";
             } else {
+                let sanitizedAltText = newlineToBr(userGif.getAttribute("aria-label").toHtmlEntities());
                 altText.style.color = options.colorAltText;
                 altText.style.backgroundColor = options.colorAltBg;
                 altText.style.fontSize = "18px";
                 altText.style.padding = "4px 8px";
                 altText.style.fontFamily =
                     'Arial, "Helvetica Neue", Helvetica, sans-serif';
-                altText.insertAdjacentHTML('beforeend', newlineToBr(userGif.getAttribute("aria-label").replaceAll("<","&lt;")));
+                altText.insertAdjacentHTML('beforeend', sanitizedAltText);
             }
 
             if (gifLink) {
